@@ -1,0 +1,349 @@
+﻿@using BELibrary.Entity
+@using BELibrary.DbContext
+@{
+    var doctors = (List<Doctor>)ViewBag.Doctors ?? new List<Doctor>();
+    var latestPosts = (List<Article>)ViewBag.LatestPosts ?? new List<Article>();
+
+    HospitalManagementDbContext db = new HospitalManagementDbContext();
+    var vacxins = db.Vacxins.ToList();
+}
+<!--Select2 [ OPTIONAL ]-->
+<link href="/Areas/Admin/Content/plugins/select2/css/select2.min.css" rel="stylesheet">
+<style>
+    .select2, .select2-selection {
+        height: 46px !important;
+    }
+</style>
+
+<section class="section section-search">
+    <div class="container-fluid">
+        <div class="banner-wrapper">
+            <div class="banner-header text-center">
+                <h1>Kiểm tra thông tin tiêm chủng</h1>
+                <p>Nhập số thông tin để kiểm tra thông tin đăng ký tiêm chủng.</p>
+            </div>
+            <div class="search-box">
+                <form action="/doctor/search" method="post" id="searchForm">
+                    <div style="max-width: 50%;" class="form-group search-info">
+                        <input  type="text" class="form-control" required placeholder="Nhập số điện thoại" id="filterSdt" name="query">
+                    </div>
+                    <div style="max-width: 50%;" class="form-group search-info">
+                        <input type="text" class="form-control" required placeholder="Nhập họ tên" id="filterName" name="query">
+                    </div>
+                    <button type="submit" class="btn btn-primary search-btn mt-0"><i class="fas fa-search"></i> <span>Search</span></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-blogs">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-9 m-auto">
+                <div class="section-header text-center">
+                    <h2>Tin tức Y Tế</h2>
+                    <p class="sub-title">Tin tức sức khoẻ, bệnh tật hằng ngày được cập nhật liên tục</p>
+                </div>
+
+                <div class="row blog-grid-row blogList">
+                    @foreach (var art in latestPosts)
+                    {
+                        <div class="col-md-12 col-lg-12 col-sm-12">
+                            <div class="blog grid-blog">
+                                <div class="blog-image">
+                                    <a href="/article/detail?id=@art.Id"><img class="img-fluid" src="@art.Image" alt="@art.Title"></a>
+                                </div>
+                                <div class="blog-content">
+                                    <ul class="entry-meta meta-item">
+                                        <li>
+                                            <div class="post-author">
+                                                <a href="#">
+                                                    <img src="~/Content/theme/img/doctors/doctor-thumb-01.jpg" alt="Post Author"> <span>Dr. Ruby Perrin</span>
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li><i class="far fa-clock"></i> @art.CreatedDate.ToString("dd/MM/yyyy HH:mm")</li>
+                                    </ul>
+                                    <h3 class="blog-title"><a hhref="/article/detail?id=@art.Id">@art.Title</a></h3>
+                                    <p class="mb-0">@art.Description</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-blogs" id="tiemchung">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-9 m-auto">
+                <div class="section-header text-center">
+                    <h2>Đăng ký tiêm chủng</h2>
+                    <h3 id="messSuccess" style="color: green;margin-top: 20px;display:none;">Đăng ký tiêm chủng thành công, chúng tôi sẽ sớm liên hệ lại với bạn để xác nhận thông tin. Chân thành cảm ơn!</h3>
+                    <h3 id="messError" style="color: red; margin-top: 20px; display: none;"></h3>
+                </div>
+                <div class="row blog-grid-row" id="FormSubmit">
+                    @using (Html.BeginForm("Edit", "DKTiemChungs", FormMethod.Post, new { id = "updateform", @class = "w-100" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-row">
+                                <div class="form-group col-md-12 m-0 mb-2 mx-auto">
+                                    <label for="Vacxin"><b>Loại Vacxin (*)</b></label>
+                                    <select id="Vacxin" name="Vacxin" required class="form-control">
+                                        <option></option>
+                                        @foreach (var item in vacxins)
+                                        {
+                                            <option value="@item.Id">@item.Name</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-4 m-0 mb-2">
+                                    <label>Mũi tiêm thứ (*)</label>
+                                    <input type="number" required placeholder="Mũi tiêm thứ" name="MuiThu" class="form-control">
+                                </div>
+                                <div class="form-group col-md-4 m-0 mb-2">
+                                    <label for="inputEmail4">Họ tên(*)</label>
+                                    <input type="text" class="form-control" required placeholder="Nhập họ tên" name="Name">
+                                </div>
+                                <div class="form-group col-md-4 m-0 mb-2">
+                                    <label for="inputPassword4">Giới tính</label>
+                                    <select id="Male" name="Male" class="form-control">
+                                        <option selected>--Giới tính--</option>
+                                        <option value="0">Nam</option>
+                                        <option value="1">Nữ</option>
+                                        <option value="2">Khác</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-4 m-0 mb-2">
+                                    <label>Số điện thoại (*)</label>
+                                    <input required type="text" class="form-control" name="Phone" placeholder="Nhập SDT">
+                                </div>
+                                <div class="form-group col-md-4 m-0 mb-2">
+                                    <label>CCCD/Mã định danh công dân</label>
+                                    <input type="text" placeholder="Nhập CCCD" name="CCCD" class="form-control">
+                                </div>
+                                <div class="form-group col-md-4 m-0 mb-2">
+                                    <label for="inputEmail4">Ngày sinh</label>
+                                    <input type="date" class="form-control" name="Birthday">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-4 m-0 mb-2">
+                                    <label>Nghề nghiệp</label>
+                                    <input type="text" class="form-control" name="Job" placeholder="Nhập Nghề nghiệp">
+                                </div>
+                                <div class="form-group col-md-4 m-0 mb-2">
+                                    <label>Dân tộc</label>
+                                    <input type="text" placeholder="Nhập dân tộc" name="DanToc" class="form-control">
+                                </div>
+                                <div class="form-group col-md-4 m-0 mb-2">
+                                    <label>Quốc tịch</label>
+                                    <input type="text" placeholder="Nhập quốc tịch" name="QuocTich" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-4 m-0 mb-2">
+                                    <label>Địa chỉ hiện tại (*)</label>
+                                    <input required type="text" class="form-control" name="Address" placeholder="Nhập địa chỉ">
+                                </div>
+                                <div class="form-group col-md-4 m-0 mb-2">
+                                    <label>Tỉnh/Tp (*)</label>
+                                    <select required name="Province" id="Province" class="form-control">
+                                        <option></option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4 m-0 mb-2">
+                                    <label>Quận/Huyện (*)</label>
+                                    <select required name="District" id="District" class="form-control">
+                                        <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-4 m-0 mb-2">
+                                    <label>Họ và tên người giám hộ</label>
+                                    <input type="text" class="form-control" name="NguoiGH" placeholder="Nhập tên người GH">
+                                </div>
+                                <div class="form-group col-md-4 m-0 mb-2">
+                                    <label>Quan hệ</label>
+                                    <select id="QuanHe" class="form-control" name="QuanHe">
+                                        <option value="0">Bố</option>
+                                        <option value="1">Mẹ</option>
+                                        <option value="2">Người thân</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4 m-0 mb-2">
+                                    <label>Số điện thoại người giám hộ</label>
+                                    <input type="text" placeholder="Số ĐT người GH" name="PhoneGH" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-4 m-0 mb-2">
+                                    <label>Số thẻ BHYT</label>
+                                    <input type="text" placeholder="Nhập số thẻ BHYT" name="BHYT" class="form-control">
+                                </div>
+                                <div class="form-group col-md-4 m-0 mb-2">
+                                    <label>Ngày muốn được tiêm (dự kiến)</label>
+                                    <input type="date" class="form-control" name="NgayTiem">
+                                </div>
+                                <div class="form-group col-md-4 m-0 mb-2">
+                                    <label>Buổi tiêm mong muốn</label>
+                                    <select id="BuoiTiem" name="BuoiTiem" class="form-control">
+                                        <option value="0">Buổi sáng</option>
+                                        <option value="1">Buổi chiều</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-12 m-0 mb-2 text-center">
+                                    <button type="submit" value="Cập nhật" class="btn btn-primary">Gửi thông tin</button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts
+{
+    <script src="~/Content/theme/js/slick.js"></script>
+    <script src="~/Content/theme/js/script.js"></script>
+    <!--Select2 [ OPTIONAL ]-->
+    <script src="/Areas/Admin/Content/plugins/select2/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.blogList').slick({
+                infinite: true,
+                slidesToShow: 3,
+                slidesToScroll: 3
+            });
+
+            $("#searchForm").on('submit', function (e) {
+                e.preventDefault();
+                if (!$("#filterSdt").val()) {
+                    alert("Vui lòng nhập số điện thoại");
+                } else if (!$("#filterName").val()) {
+                    alert("Vui lòng nhập họ tên");
+                }else {
+                    $.ajax({
+                        url: '/Home/GetInfoTiemChung',
+                        data: {
+                            sdt: $("#filterSdt").val(),
+                            name: $("#filterName").val()
+                        },
+                        type: 'POST',
+                        success: function (data) {
+                            console.log(data);
+                            if (!data.status || !data.data) {
+                                alert("Không tìm thấy thông tin đăng ký tiêm chủng!");
+                            }
+                            if (data.status && data.data) {
+                                console.log(data);
+                                $("#nameInfo").html(`${data.data.Name}`);
+                                $("#cccdInfo").html(`${data.data.CCCD}`);
+                                $("#sdtInfo").html(`${data.data.Phone}`);
+                                $("#bhytInfo").html(`${data.data.BHYT}`);
+                                $("#addressInfo").html(`${data.data.Address}`);
+                                $("#ngaytiemInfo").html(`${data.data.NgayTiem}`);
+                                $("#buoitiemInfo").html(`${data.data.BuoiTiem}`);
+                                $("#ngaydkInfo").html(`${data.data.NgayDK}`);
+                                $('#infoModal').modal('toggle')
+                            }
+                        },
+                        error: function (data) {
+                            alert("Đã có lỗi xảy ra, vui lòng thử lại sau!");
+                        }
+                    });
+                }
+            });
+
+            $("#updateform").on('submit', function (e) {
+                e.preventDefault();
+                var form = $("#updateform");
+                $.ajax({
+                    url: '/Admin/DKTiemChungs/EditAjax',
+                    data: form.serialize(),
+                    type: 'POST',
+                    success: function (data) {
+                        $("#FormSubmit").css("display", "none");
+                        $("#messSuccess").css("display", "block");
+                    },
+                    error: function (data) {
+                        $("#messError").html("Đã có lỗi xảy ra, vui lòng thử lại sau!");
+                        $("#messError").css("display", "block");
+                    }
+                });
+            })
+
+            $("#Vacxin").select2({
+                placeholder: "Chọn loại Vacxin"
+            });
+
+            $.ajax({
+                url: "https://provinces.open-api.vn/api/",
+                type: "GET",
+                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                success: function (data) {
+                    //console.log(data);
+                    var dataSelect2 = [];
+
+                    for (const item in data) {
+                        var jsonItem = { "id": data[item].code, "text": data[item].name }
+                        dataSelect2.push(jsonItem);
+                    }
+
+                    $("#Province").select2({
+                        placeholder: "Chọn Tỉnh/Tp",
+                        data: dataSelect2
+                    });
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    alert("Đã xảy ra lỗi, phiền bạn hãy thực hiện lại!");
+                }
+            });
+
+            var dataProvince = [];
+            $.ajax({
+                url: "https://provinces.open-api.vn/api/?depth=2",
+                type: "GET",
+                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                success: function (data) {
+                    dataProvince = data;
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    alert("Đã xảy ra lỗi, phiền bạn hãy thực hiện lại!");
+                }
+            });
+
+            $("#Province").on('change', function () {
+                var code = $(this).val();
+                var dataFind = dataProvince.find(x => x.code == code).districts
+                //console.log(dataFind);
+                var dataSelect2 = [];
+
+                for (const item in dataFind) {
+                    var jsonItem = { "id": dataFind[item].code, "text": dataFind[item].name }
+                    dataSelect2.push(jsonItem);
+                }
+
+                $("#District").select2({
+                    placeholder: "Chọn Quận/Huyện",
+                    data: dataSelect2
+                });
+            });
+        });
+    </script>
+} 

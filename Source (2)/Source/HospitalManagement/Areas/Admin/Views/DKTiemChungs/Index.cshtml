@@ -1,0 +1,160 @@
+﻿@using BELibrary.Entity
+@using BELibrary.Utils
+@using BELibrary.DbContext
+@model IEnumerable<BELibrary.Entity.DKTiemChung>
+@{
+    ViewBag.Title = ViewBag.Feature + " " + ViewBag.Element;
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@section CSS{
+    <!--DataTables [ OPTIONAL ]-->
+    @*<link href="/Areas/Admin/Content/plugins/datatables/media/css/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="/Areas/Admin/Content/plugins/datatables/extensions/Responsive/css/responsive.dataTables.min.css" rel="stylesheet">*@
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+    <style>
+        .select2-container {
+            z-index: 99999;
+            width: 100% !important;
+        }
+    </style>
+}
+
+@functions{
+    public string GetVacxinName(int? id = 0)
+    {
+        HospitalManagementDbContext db = new HospitalManagementDbContext();
+        var vacxins = db.Vacxins.Find(id);
+        if (id != 0)
+        {
+            return vacxins.Name;
+        }
+        return string.Empty;
+    }
+}
+
+<div class="panel">
+    <div class="panel-body">
+        <div class="pad-btm form-inline">
+            <div class="row">
+                <div class="col-sm-6 table-toolbar-left">
+                    <a data-toggle="modal" href="/Admin/DKTiemChungs/Create" class="btn btn-success"><i class="demo-pli-add"></i> Thêm mới</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-striped" id="tblData">
+                <thead>
+                    <tr>
+                        <th class="text-center">STT</th>
+                        <th class="text-center">Họ tên</th>
+                        <th class="text-center">Tên mũi tiêm</th>
+                        <th class="text-center">Mũi thứ</th>
+                        <th class="text-center">CCCD</th>
+                        <th class="text-center">Số điện thoại </th>
+                        <th class="text-center" style="display: flex;align-items: center;gap: 5px;">Ngày tiêm <input type="text" id="min" name="min" placeholder="Nhập ngày tiêm" class="form-control" style="max-width: 100px;" /></th>
+                        <th class="text-center">Trạng thái</th>
+                        <th class="text-center">Ngày đăng ký</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Select((value, index) => new { index = (index + 1), value }))
+                    {
+                        <tr id="row_@item.value.Id">
+                            <td class="text-center"><a class="btn-link" href="#">@item.index</a></td>
+                            <td class="text-center">@item.value.Name</td>
+                            <td class="text-center">@GetVacxinName(item.value.Vacxin) </td>
+                            <td class="text-center">@item.value.MuiThu</td>
+                            <td class="text-center">@item.value.CCCD</td>
+                            <td class="text-center">@item.value.Phone</td>
+                            <td class="text-center">@((item.value.NgayTiem ?? DateTime.Now).ToString("dd/MM/yyyy"))</td>
+                            <td class="text-center">@(item.value.IsActive == true ? "Đã tiêm" : "Chưa tiêm")</td>
+                            <td class="text-center">@((item.value.NgayDK ?? DateTime.Now).ToString("dd/MM/yyyy"))</td>
+                            <td class="text-center">
+                                <a class="btn btn-info btn-sm btn-icon  add-tooltip" data-original-title="Sửa" href="/Admin/DKTiemChungs/Edit/@item.value.Id"><i class="demo-psi-pen-5 icon-lg"></i></a>
+                                <button class="btn btn-danger btn-sm btn-icon  add-tooltip" data-original-title="Xóa" onclick="deleteElement('@item.value.Id','@item.value.Name')"><i class="demo-psi-recycling icon-lg"></i></button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <!--DataTables [ OPTIONAL ]-->
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    @*<script src="/Areas/Admin/Content/plugins/datatables/media/js/jquery.dataTables.js"></script>
+        <script src="/Areas/Admin/Content/plugins/datatables/media/js/dataTables.bootstrap.js"></script>
+        <script src="/Areas/Admin/Content/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js"></script>*@
+    <script>
+        $(document).ready(function () {
+            const min = document.querySelector('#min');
+            DataTable.ext.search.push(function (settings, data, dataIndex) {
+                let ngayDK = min.value || 0;
+                let data6 = data[6] || 0;
+
+                if (data6.includes(ngayDK) || ngayDK == 0) {
+                    return true;
+                }
+
+                return false;
+            });
+
+            const table = new DataTable('#tblData', {
+                language: {
+                    "paginate": {
+                        "previous": '<i class="demo-psi-arrow-left"></i>',
+                        "next": '<i class="demo-psi-arrow-right"></i>'
+                    },
+                    "search": "Tìm kiếm:",
+                    "emptyTable": "Dữ liệu trống",
+                    "zeroRecords": "Không tìm thấy bản nghi nào",
+                    "decimal": "",
+                    "info": "Hiển thị _START_ đến _END_ của _TOTAL_ bản ghi",
+                    "infoEmpty": "Hiển thị 0 đến 0 của 0 bản ghi",
+                    "infoFiltered": "(filtered from _MAX_ total entries)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Hiển thị _MENU_ bản ghi",
+                    "loadingRecords": "Đang tải...",
+                    "processing": "Đang xử lý...",
+                    "aria": {
+                        "sortAscending": ": Kích hoạt để sắp xếp cột tăng",
+                        "sortDescending": ": Kích hoạt để sắp xếp cột giảm"
+                    }
+                }
+            });
+            
+            min.addEventListener('input', function () {
+                table.draw();
+            });
+        });
+
+        //Del
+        function deleteElement(_id, name) {
+            var mess = `Xác nhận <b>xóa</b> bản ghi <b>${name}</b>`;
+            bootbox.confirm(mess,
+                function (result) {
+                    if (result) {
+                        ajax.del(`http://localhost:6688/Admin/DKTiemChungs/Delete`,
+                            { id: _id },
+                            (response) => {
+                                notify.push("Xoá thành công!", notify.EType.SUCCESS);
+                                $(`#row_${_id}`).remove();
+                            },
+                            (jqXhr, textStatus) => {
+                                //const mess = `Request failed: ${textStatus}`;
+                                //notify.push(mess, notify.EType.DANGER);
+                                notify.push("Xoá thành công!", notify.EType.SUCCESS);
+                                $(`#row_${_id}`).remove();
+                            }
+                        );
+                    }
+                });
+        }
+    </script>
+}
