@@ -1,0 +1,112 @@
+D:\DoAn\1\Source\BELibrary\bin\Debug\BELibrary.dll.config
+D:\DoAn\1\Source\BELibrary\bin\Debug\BELibrary.dll
+D:\DoAn\1\Source\BELibrary\bin\Debug\BELibrary.pdb
+D:\DoAn\1\Source\BELibrary\bin\Debug\AutoMapper.dll
+D:\DoAn\1\Source\BELibrary\bin\Debug\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\DoAn\1\Source\BELibrary\bin\Debug\EntityFramework.dll
+D:\DoAn\1\Source\BELibrary\bin\Debug\EntityFramework.SqlServer.dll
+D:\DoAn\1\Source\BELibrary\bin\Debug\System.ValueTuple.dll
+D:\DoAn\1\Source\BELibrary\bin\Debug\Z.EntityFramework.Extensions.dll
+D:\DoAn\1\Source\BELibrary\bin\Debug\Z.EntityFramework.Plus.EF6.dll
+D:\DoAn\1\Source\BELibrary\bin\Debug\Z.Expressions.Eval.dll
+D:\DoAn\1\Source\BELibrary\bin\Debug\AutoMapper.pdb
+D:\DoAn\1\Source\BELibrary\bin\Debug\AutoMapper.xml
+D:\DoAn\1\Source\BELibrary\bin\Debug\AutoMapper.Extensions.Microsoft.DependencyInjection.pdb
+D:\DoAn\1\Source\BELibrary\bin\Debug\EntityFramework.xml
+D:\DoAn\1\Source\BELibrary\bin\Debug\EntityFramework.SqlServer.xml
+D:\DoAn\1\Source\BELibrary\bin\Debug\System.ValueTuple.xml
+D:\DoAn\1\Source\BELibrary\bin\Debug\Z.EntityFramework.Extensions.xml
+D:\DoAn\1\Source\BELibrary\bin\Debug\Z.EntityFramework.Plus.EF6.xml
+D:\DoAn\1\Source\BELibrary\bin\Debug\Z.Expressions.Eval.xml
+D:\DoAn\1\Source\BELibrary\obj\Debug\BELibrary.csproj.AssemblyReference.cache
+D:\DoAn\1\Source\BELibrary\obj\Debug\BELibrary.Migrations.Initdatabase.resources
+D:\DoAn\1\Source\BELibrary\obj\Debug\BELibrary.Migrations.New_Article_table.resources
+D:\DoAn\1\Source\BELibrary\obj\Debug\BELibrary.csproj.GenerateResource.cache
+D:\DoAn\1\Source\BELibrary\obj\Debug\BELibrary.csproj.CoreCompileInputs.cache
+D:\DoAn\1\Source\BELibrary\obj\Debug\BELibrary.csproj.CopyComplete
+D:\DoAn\1\Source\BELibrary\obj\Debug\BELibrary.dll
+D:\DoAn\1\Source\BELibrary\obj\Debug\BELibrary.pdb
+D:\MaiA\Doan\NguyenTuQuoc\Source\BELibrary\bin\Debug\BELibrary.dll.config
+D:\MaiA\Doan\NguyenTuQuoc\Source\BELibrary\bin\Debug\BELibrary.dll
+D:\MaiA\Doan\NguyenTuQuoc\Source\BELibrary\bin\Debug\BELibrary.pdb
+D:\MaiA\Doan\NguyenTuQuoc\Source\BELibrary\bin\Debug\AutoMapper.dll
+D:\MaiA\Doan\NguyenTuQuoc\Source\BELibrary\bin\Debug\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\MaiA\Doan\NguyenTuQuoc\Source\BELibrary\bin\Debug\EntityFramework.dll
+D:\MaiA\Doan\NguyenTuQuoc\Source\BELibrary\bin\Debug\EntityFramework.SqlServer.dll
+D:\MaiA\Doan\NguyenTuQuoc\Source\BELibrary\bin\Debug\System.ValueTuple.dll
+D:\MaiA\Doan\NguyenTuQuoc\Source\BELibrary\bin\Debug\Z.EntityFramework.Extensions.dll
+D:\MaiA\Doan\NguyenTuQuoc\Source\BELibrary\bin\Debug\Z.EntityFramework.Plus.EF6.dll
+D:\MaiA\Doan\NguyenTuQuoc\Source\BELibrary\bin\Debug\Z.Expressions.Eval.dll
+D:\MaiA\Doan\NguyenTuQuoc\Source\BELibrary\bin\Debug\AutoMapper.pdb
+D:\MaiA\Doan\NguyenTuQuoc\Source\BELibrary\bin\Debug\AutoMapper.xml
+D:\MaiA\Doan\NguyenTuQuoc\Source\BELibrary\bin\Debug\AutoMapper.Extensions.Microsoft.DependencyInjection.pdb
+D:\MaiA\Doan\NguyenTuQuoc\Source\BELibrary\bin\Debug\EntityFramework.xml
+D:\MaiA\Doan\NguyenTuQuoc\Source\BELibrary\bin\Debug\EntityFramework.SqlServer.xml
+D:\MaiA\Doan\NguyenTuQuoc\Source\BELibrary\bin\Debug\System.ValueTuple.xml
+D:\MaiA\Doan\NguyenTuQuoc\Source\BELibrary\bin\Debug\Z.EntityFramework.Extensions.xml
+D:\MaiA\Doan\NguyenTuQuoc\Source\BELibrary\bin\Debug\Z.EntityFramework.Plus.EF6.xml
+D:\MaiA\Doan\NguyenTuQuoc\Source\BELibrary\bin\Debug\Z.Expressions.Eval.xml
+D:\MaiA\Doan\NguyenTuQuoc\Source\BELibrary\obj\Debug\BELibrary.csproj.AssemblyReference.cache
+D:\MaiA\Doan\NguyenTuQuoc\Source\BELibrary\obj\Debug\BELibrary.Migrations.Initdatabase.resources
+D:\MaiA\Doan\NguyenTuQuoc\Source\BELibrary\obj\Debug\BELibrary.Migrations.New_Article_table.resources
+D:\MaiA\Doan\NguyenTuQuoc\Source\BELibrary\obj\Debug\BELibrary.csproj.GenerateResource.cache
+D:\MaiA\Doan\NguyenTuQuoc\Source\BELibrary\obj\Debug\BELibrary.csproj.CoreCompileInputs.cache
+D:\MaiA\Doan\NguyenTuQuoc\Source\BELibrary\obj\Debug\BELibrary.csproj.CopyComplete
+D:\MaiA\Doan\NguyenTuQuoc\Source\BELibrary\obj\Debug\BELibrary.dll
+D:\MaiA\Doan\NguyenTuQuoc\Source\BELibrary\obj\Debug\BELibrary.pdb
+D:\DoAn\11.NGUYENTUQUOC1\Source\BELibrary\bin\Debug\BELibrary.dll.config
+D:\DoAn\11.NGUYENTUQUOC1\Source\BELibrary\bin\Debug\BELibrary.dll
+D:\DoAn\11.NGUYENTUQUOC1\Source\BELibrary\bin\Debug\BELibrary.pdb
+D:\DoAn\11.NGUYENTUQUOC1\Source\BELibrary\bin\Debug\AutoMapper.dll
+D:\DoAn\11.NGUYENTUQUOC1\Source\BELibrary\bin\Debug\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\DoAn\11.NGUYENTUQUOC1\Source\BELibrary\bin\Debug\EntityFramework.dll
+D:\DoAn\11.NGUYENTUQUOC1\Source\BELibrary\bin\Debug\EntityFramework.SqlServer.dll
+D:\DoAn\11.NGUYENTUQUOC1\Source\BELibrary\bin\Debug\System.ValueTuple.dll
+D:\DoAn\11.NGUYENTUQUOC1\Source\BELibrary\bin\Debug\Z.EntityFramework.Extensions.dll
+D:\DoAn\11.NGUYENTUQUOC1\Source\BELibrary\bin\Debug\Z.EntityFramework.Plus.EF6.dll
+D:\DoAn\11.NGUYENTUQUOC1\Source\BELibrary\bin\Debug\Z.Expressions.Eval.dll
+D:\DoAn\11.NGUYENTUQUOC1\Source\BELibrary\bin\Debug\AutoMapper.pdb
+D:\DoAn\11.NGUYENTUQUOC1\Source\BELibrary\bin\Debug\AutoMapper.xml
+D:\DoAn\11.NGUYENTUQUOC1\Source\BELibrary\bin\Debug\AutoMapper.Extensions.Microsoft.DependencyInjection.pdb
+D:\DoAn\11.NGUYENTUQUOC1\Source\BELibrary\bin\Debug\EntityFramework.xml
+D:\DoAn\11.NGUYENTUQUOC1\Source\BELibrary\bin\Debug\EntityFramework.SqlServer.xml
+D:\DoAn\11.NGUYENTUQUOC1\Source\BELibrary\bin\Debug\System.ValueTuple.xml
+D:\DoAn\11.NGUYENTUQUOC1\Source\BELibrary\bin\Debug\Z.EntityFramework.Extensions.xml
+D:\DoAn\11.NGUYENTUQUOC1\Source\BELibrary\bin\Debug\Z.EntityFramework.Plus.EF6.xml
+D:\DoAn\11.NGUYENTUQUOC1\Source\BELibrary\bin\Debug\Z.Expressions.Eval.xml
+D:\DoAn\11.NGUYENTUQUOC1\Source\BELibrary\obj\Debug\BELibrary.csproj.AssemblyReference.cache
+D:\DoAn\11.NGUYENTUQUOC1\Source\BELibrary\obj\Debug\BELibrary.Migrations.Initdatabase.resources
+D:\DoAn\11.NGUYENTUQUOC1\Source\BELibrary\obj\Debug\BELibrary.Migrations.New_Article_table.resources
+D:\DoAn\11.NGUYENTUQUOC1\Source\BELibrary\obj\Debug\BELibrary.csproj.GenerateResource.cache
+D:\DoAn\11.NGUYENTUQUOC1\Source\BELibrary\obj\Debug\BELibrary.csproj.CoreCompileInputs.cache
+D:\DoAn\11.NGUYENTUQUOC1\Source\BELibrary\obj\Debug\BELibrary.csproj.CopyComplete
+D:\DoAn\11.NGUYENTUQUOC1\Source\BELibrary\obj\Debug\BELibrary.dll
+D:\DoAn\11.NGUYENTUQUOC1\Source\BELibrary\obj\Debug\BELibrary.pdb
+C:\Users\ASUS\Downloads\Source (2)\Source\BELibrary\bin\Debug\BELibrary.dll.config
+C:\Users\ASUS\Downloads\Source (2)\Source\BELibrary\bin\Debug\BELibrary.dll
+C:\Users\ASUS\Downloads\Source (2)\Source\BELibrary\bin\Debug\BELibrary.pdb
+C:\Users\ASUS\Downloads\Source (2)\Source\BELibrary\bin\Debug\AutoMapper.dll
+C:\Users\ASUS\Downloads\Source (2)\Source\BELibrary\bin\Debug\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\ASUS\Downloads\Source (2)\Source\BELibrary\bin\Debug\EntityFramework.dll
+C:\Users\ASUS\Downloads\Source (2)\Source\BELibrary\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ASUS\Downloads\Source (2)\Source\BELibrary\bin\Debug\System.ValueTuple.dll
+C:\Users\ASUS\Downloads\Source (2)\Source\BELibrary\bin\Debug\Z.EntityFramework.Extensions.dll
+C:\Users\ASUS\Downloads\Source (2)\Source\BELibrary\bin\Debug\Z.EntityFramework.Plus.EF6.dll
+C:\Users\ASUS\Downloads\Source (2)\Source\BELibrary\bin\Debug\Z.Expressions.Eval.dll
+C:\Users\ASUS\Downloads\Source (2)\Source\BELibrary\bin\Debug\AutoMapper.pdb
+C:\Users\ASUS\Downloads\Source (2)\Source\BELibrary\bin\Debug\AutoMapper.xml
+C:\Users\ASUS\Downloads\Source (2)\Source\BELibrary\bin\Debug\AutoMapper.Extensions.Microsoft.DependencyInjection.pdb
+C:\Users\ASUS\Downloads\Source (2)\Source\BELibrary\bin\Debug\EntityFramework.xml
+C:\Users\ASUS\Downloads\Source (2)\Source\BELibrary\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ASUS\Downloads\Source (2)\Source\BELibrary\bin\Debug\System.ValueTuple.xml
+C:\Users\ASUS\Downloads\Source (2)\Source\BELibrary\bin\Debug\Z.EntityFramework.Extensions.xml
+C:\Users\ASUS\Downloads\Source (2)\Source\BELibrary\bin\Debug\Z.EntityFramework.Plus.EF6.xml
+C:\Users\ASUS\Downloads\Source (2)\Source\BELibrary\bin\Debug\Z.Expressions.Eval.xml
+C:\Users\ASUS\Downloads\Source (2)\Source\BELibrary\obj\Debug\BELibrary.csproj.AssemblyReference.cache
+C:\Users\ASUS\Downloads\Source (2)\Source\BELibrary\obj\Debug\BELibrary.Migrations.Initdatabase.resources
+C:\Users\ASUS\Downloads\Source (2)\Source\BELibrary\obj\Debug\BELibrary.Migrations.New_Article_table.resources
+C:\Users\ASUS\Downloads\Source (2)\Source\BELibrary\obj\Debug\BELibrary.csproj.GenerateResource.cache
+C:\Users\ASUS\Downloads\Source (2)\Source\BELibrary\obj\Debug\BELibrary.csproj.CoreCompileInputs.cache
+C:\Users\ASUS\Downloads\Source (2)\Source\BELibrary\obj\Debug\BELibrary.csproj.CopyComplete
+C:\Users\ASUS\Downloads\Source (2)\Source\BELibrary\obj\Debug\BELibrary.dll
+C:\Users\ASUS\Downloads\Source (2)\Source\BELibrary\obj\Debug\BELibrary.pdb
