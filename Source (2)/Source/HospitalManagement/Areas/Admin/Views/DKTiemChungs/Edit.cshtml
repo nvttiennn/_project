@@ -1,0 +1,270 @@
+﻿@model BELibrary.Entity.DKTiemChung
+@using BELibrary.Entity
+@using BELibrary.DbContext
+@{
+    ViewBag.Title = ViewBag.Feature + " " + ViewBag.Element;
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+
+    HospitalManagementDbContext db = new HospitalManagementDbContext();
+    var vacxins = db.Vacxins.ToList();
+}
+
+<style>
+    .m-0 {
+        margin: 0 !important;
+    }
+
+    .mb-2 {
+        margin-bottom: 20px !important;
+    }
+</style>
+<div class="panel">
+    <div class="panel-body">
+        @using (Html.BeginForm("Edit", "DKTiemChungs", FormMethod.Post, new { id = "updateform" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.Id)
+                <div class="form-row">
+                    <div class="form-group col-md-12 m-0 mb-2">
+                        <label for="Vacxin">Loại vacxin</label>
+                        <select id="Vacxin" name="Vacxin" required class="form-control">
+                            <option></option>
+                            @foreach (var item in vacxins)
+                            {
+                                if (Model.Vacxin != null && item.Id == Model.Vacxin)
+                                {
+                                    <option selected value="@item.Id">@item.Name</option>
+                                }
+                                else
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4 m-0 mb-2">
+                        <label>Mũi tiêm thứ</label>
+                        <input type="number" placeholder="Mũi tiêm thứ" value="@Model.MuiThu" required name="MuiThu" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4 m-0 mb-2">
+                        <label for="inputEmail4">Họ tên(*)</label>
+                        <input type="text" class="form-control" required placeholder="Nhập họ tên" value="@Model.Name" name="Name">
+                    </div>
+                    <div class="form-group col-md-4 m-0 mb-2">
+                        <label for="inputPassword4">Giới tính</label>
+                        <select id="Male" name="Male" class="form-control">
+                            <option selected>--Giới tính--</option>
+                            <option value="0">Nam</option>
+                            <option value="1">Nữ</option>
+                            <option value="2">Khác</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4 m-0 mb-2">
+                        <label>Số điện thoại (*)</label>
+                        <input type="text" required value="@Model.Phone" class="form-control" name="Phone" placeholder="Nhập SDT">
+                    </div>
+                    <div class="form-group col-md-4 m-0 mb-2">
+                        <label>CCCD/Mã định danh công dân (*)</label>
+                        <input type="text" placeholder="Nhập CCCD" value="@Model.CCCD" name="CCCD" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4 m-0 mb-2">
+                        <label for="inputEmail4">Ngày sinh</label>
+                        <input type="date" class="form-control" value="@((Model.Birthday ?? DateTime.Now).ToString("yyyy-MM-dd"))" name="Birthday">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4 m-0 mb-2">
+                        <label>Nghề nghiệp</label>
+                        <input type="text" class="form-control" value="@Model.Job" name="Job" placeholder="Nhập Nghề nghiệp">
+                    </div>
+                    <div class="form-group col-md-4 m-0 mb-2">
+                        <label>Dân tộc</label>
+                        <input type="text" placeholder="Nhập dân tộc" value="@Model.DanToc" name="DanToc" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4 m-0 mb-2">
+                        <label>Quốc tịch</label>
+                        <input type="text" placeholder="Nhập quốc tịch" value="@Model.QuocTich" name="QuocTich" class="form-control">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4 m-0 mb-2">
+                        <label>Địa chỉ hiện tại (*)</label>
+                        <input type="text" class="form-control" required name="Address" value="@Model.Address" placeholder="Nhập địa chỉ">
+                    </div>
+                    <div class="form-group col-md-4 m-0 mb-2">
+                        <label>Tỉnh/Tp (*)</label>
+                        <select name="Province" id="Province" class="form-control">
+                            <option value="1">H N</option>
+                            <option value="2">TP HCM</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4 m-0 mb-2">
+                        <label>Quận/Huyện (*)</label>
+                        <select name="District" id="District" class="form-control">
+                            <option value="1">H N</option>
+                            <option value="2">TP HCM</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4 m-0 mb-2">
+                        <label>Họ và tên người giám hộ</label>
+                        <input type="text" class="form-control" name="NguoiGH" value="@Model.NguoiGH" placeholder="Nhập tên người GH">
+                    </div>
+                    <div class="form-group col-md-4 m-0 mb-2">
+                        <label>Quan hệ</label>
+                        <select id="QuanHe" class="form-control" name="QuanHe">
+                            <option value="0">Bố</option>
+                            <option value="1">Mẹ</option>
+                            <option value="2">Người thân</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4 m-0 mb-2">
+                        <label>Số điện thoại người giám hộ</label>
+                        <input type="text" placeholder="Số ĐT người GH" value="@Model.PhoneGH" name="PhoneGH" class="form-control">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4 m-0 mb-2">
+                        <label>Số thẻ BHYT</label>
+                        <input type="text" placeholder="Nhập số thẻ BHYT" name="BHYT" value="@Model.BHYT" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4 m-0 mb-2">
+                        <label>Ngày muốn được tiêm (dự kiến)</label>
+                        <input type="date" class="form-control" name="NgayTiem" value="@((Model.NgayTiem ?? DateTime.Now).ToString("yyyy-MM-dd"))" value="@Model.NgayTiem">
+                    </div>
+                    <div class="form-group col-md-4 m-0 mb-2">
+                        <label>Buổi tiêm mong muốn</label>
+                        <select id="BuoiTiem" name="BuoiTiem" class="form-control">
+                            <option value="0">Buổi sáng</option>
+                            <option value="1">Buổi chiều</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4 m-0 mb-2">
+                        <label>Đã tiêm</label><br />
+                        @if (Model.IsActive == true)
+                        {
+                            <input type="checkbox" class="custom-control-input" value="0" name="IsActive" checked id="IsActive" style="width: 25px;height:25px;">
+                        }
+                        else
+                        {
+                            <input type="checkbox" class="custom-control-input" value="1" name="IsActive" id="IsActive" style="width: 25px;height:25px;">
+                        }
+                    </div>
+                    <div class="form-group col-md-12 m-0 mb-2">
+                        <label>Ghi chú</label><br />
+                        <textarea class="form-control" name="Note" id="Note">@Model.Note</textarea>
+                    </div>
+                    <div class="form-group col-md-12 m-0 mb-2">
+                        <button type="submit" value="Cập nhật" class="btn btn-primary">Cập nhật</button>
+                        <a href="/Admin/DKTiemChungs/Index">Quay lại</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#updateform").on('submit', function (e) {
+                e.preventDefault();
+                var form = $("#updateform");
+                $.ajax({
+                    url : '@Url.Action("EditAjax")',
+                    data: form.serialize(),
+                    type: 'POST',
+                    success: function (data) {
+                        if (data.status) {
+                            notify.push(data.mess, notify.EType.SUCCESS);
+                            window.location.href = "/Admin/DKTiemChungs/index";
+                        } else {
+                            const mess = data.mess;
+                            notify.push(mess, notify.EType.DANGER);
+                        }
+                    },
+                    error: function (data) {
+                        const mess = data.mess;
+                        notify.push(mess, notify.EType.DANGER);
+                    }
+                });
+            })
+
+            $.ajax({
+                url: "https://provinces.open-api.vn/api/",
+                type: "GET",
+                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                success: function (data) {
+                    //console.log(data);
+                    var dataSelect2 = [];
+
+                    for (const item in data) {
+                        var jsonItem = { "id": data[item].code, "text": data[item].name }
+                        dataSelect2.push(jsonItem);
+                    }
+
+                    $("#Province").select2({
+                        placeholder: "Chọn Tỉnh/Tp",
+                        data: dataSelect2
+                    });
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    alert("Đã xảy ra lỗi, phiền bạn hãy thực hiện lại!");
+                }
+            });
+
+            var dataProvince = [];
+            $.ajax({
+                url: "https://provinces.open-api.vn/api/?depth=2",
+                type: "GET",
+                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                success: function (data) {
+                    dataProvince = data;
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    alert("Đã xảy ra lỗi, phiền bạn hãy thực hiện lại!");
+                }
+            });
+
+            $("#Vacxin").select2({
+                placeholder: "Chọn loại Vacxin"
+            });
+
+            $("#Province").on('change', function () {
+                var code = $(this).val();
+                var dataFind = dataProvince.find(x => x.code == code).districts
+                //console.log(dataFind);
+                var dataSelect2 = [];
+
+                for (const item in dataFind) {
+                    var jsonItem = { "id": dataFind[item].code, "text": dataFind[item].name }
+                    dataSelect2.push(jsonItem);
+                }
+
+                $("#District").select2({
+                    placeholder: "Chọn Quận/Huyện",
+                    data: dataSelect2
+                });
+            });
+        });
+    </script>
+
+    @if (Model.Id != 0)
+    {
+        <script>
+            $("#QuanHe").val('@Model.QuanHe').change();
+            $("#Male").val('@Model.Male').change();
+            $("#BuoiTiem").val('@Model.QuanHe').change();
+        </script>
+    }
+}
